@@ -5,20 +5,13 @@ interface EditBoardModalProps {
     isOpen: boolean;
     onClose: () => void;
     onUpdateBoard: (board: Board) => void;
-    board?: Board | null; // Board que será editado
+    board?: Board | null;
 }
 
 export function EditBoardModal({ isOpen, onClose, onUpdateBoard, board }: EditBoardModalProps) {
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
 
-    // Carrega os dados do board no estado ao abrir o modal
-    useEffect(() => {
-        if (board) {
-            setTitle(board.title);
-            setDescription(board.description || "");
-        }
-    }, [board]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,8 +23,15 @@ export function EditBoardModal({ isOpen, onClose, onUpdateBoard, board }: EditBo
             description,
         });
 
-        onClose(); // Fecha o modal após salvar as alterações
+        onClose();
     };
+
+    useEffect(() => {
+        if (board) {
+            setTitle(board.title);
+            setDescription(board.description || "");
+        }
+    }, [board]);
 
     return (
         <div
@@ -40,7 +40,7 @@ export function EditBoardModal({ isOpen, onClose, onUpdateBoard, board }: EditBo
         >
             <div
                 className="bg-gray-800 border border-slate-600 p-8 rounded-md w-96"
-                onClick={(e) => e.stopPropagation()} // Impede que o clique fora do modal feche-o
+                onClick={(e) => e.stopPropagation()}
             >
                 <h2 className="text-xl font-semibold mb-4">Editar Quadro</h2>
                 <form onSubmit={handleSubmit}>

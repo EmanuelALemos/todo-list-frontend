@@ -37,7 +37,7 @@ export function TaskCard({ id, title, description, priority, due_date, column_id
     };
 
     const handleTitleClick = () => {
-        setViewModalOpen(true); // Abre o modal de visualização
+        setViewModalOpen(true);
     };
 
     const [{ isDragging }, drag] = useDrag({

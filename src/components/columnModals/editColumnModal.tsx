@@ -26,14 +26,7 @@ export function EditColumnModal({ isOpen, onClose, column, onSave }: EditColumnM
     const [selectedColor, setSelectedColor] = useState('gray');
     const [description, setDescription] = useState('');
 
-    useEffect(() => {
-        if (column) {
-            setTitle(column.title);
-            setSelectedColor(column.color);
-            setDescription(column.description);
-        }
-    }, [column]);
-
+    
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
         if (column) {
@@ -41,7 +34,15 @@ export function EditColumnModal({ isOpen, onClose, column, onSave }: EditColumnM
         }
         onClose();
     };
-
+    
+    useEffect(() => {
+        if (column) {
+            setTitle(column.title);
+            setSelectedColor(column.color);
+            setDescription(column.description);
+        }
+    }, [column]);
+    
     if (!isOpen || !column) return null;
 
     return (

@@ -48,23 +48,6 @@ export function ColumnBoard({ column, onEdit, onDelete }: ColumnBoardProps) {
 
     const style = columnColor[column.color]
 
-    const handleMenuToggle = (columnId: number) => {
-        setIsMenuOpen(isMenuOpen === columnId ? null : columnId);
-    };
-
-    const moveTask = async (taskId: number, sourceColumnId: number, destinationColumnId: number) => {
-        try {
-
-            const movedTask = await TaskService.moveTask(Number(boardId), sourceColumnId, taskId, destinationColumnId);
-
-            if (destinationColumnId === column.id) {
-                setTasks((prevTasks) => [...prevTasks, movedTask]);
-            }
-        } catch (error) {
-            console.error("Error moving task:", error);
-        }
-    };
-
     const [{ isOver, item }, drop] = useDrop({
         accept: ITEM_TYPE,
         drop: (item: { taskId: number, columnId: number }) => {
@@ -80,9 +63,9 @@ export function ColumnBoard({ column, onEdit, onDelete }: ColumnBoardProps) {
         },
     });
 
-
-
-
+    const handleMenuToggle = (columnId: number) => {
+        setIsMenuOpen(isMenuOpen === columnId ? null : columnId);
+    };
 
     const loadTasks = async () => {
         if (!boardId) return;
@@ -125,6 +108,19 @@ export function ColumnBoard({ column, onEdit, onDelete }: ColumnBoardProps) {
         }
     };
 
+    const moveTask = async (taskId: number, sourceColumnId: number, destinationColumnId: number) => {
+        try {
+
+            const movedTask = await TaskService.moveTask(Number(boardId), sourceColumnId, taskId, destinationColumnId);
+
+            if (destinationColumnId === column.id) {
+                setTasks((prevTasks) => [...prevTasks, movedTask]);
+            }
+        } catch (error) {
+            console.error("Error moving task:", error);
+        }
+    };
+
     const handleDeleteTask = async () => {
         if (!boardId || !taskToDelete) return;
 
@@ -149,7 +145,7 @@ export function ColumnBoard({ column, onEdit, onDelete }: ColumnBoardProps) {
     useEffect(() => {
         if (item) {
             setTasks((prevTasks) => prevTasks.filter((task) => task.id !== item.taskId));
-            
+
         }
     }, [item]);
 

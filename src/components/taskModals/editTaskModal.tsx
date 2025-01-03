@@ -5,7 +5,7 @@ interface EditTaskModalProps {
     isOpen: boolean;
     onClose: () => void;
     onSave: (task: Task) => void;
-    task: Task | null; // Passar a tarefa para ser editada
+    task: Task | null;
 }
 
 const priorityStyles: Record<number, string> = {
@@ -26,18 +26,10 @@ export function EditTaskModal({ isOpen, onClose, onSave, task }: EditTaskModalPr
     const [priority, setPriority] = useState(3);
     const [endDate, setEndDate] = useState('');
 
-    useEffect(() => {
-        if (task) {
-            setTitle(task.title);
-            setDescription(task.description);
-            setPriority(task.priority);
-            setEndDate(task.due_date ? new Date(task.due_date).toISOString().split('T')[0] : ''); // Ajusta a data se necessário
-        }
-    }, [task]);
-
+    
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
-
+        
         if (task) {
             const updatedTask = {
                 ...task,
@@ -46,21 +38,30 @@ export function EditTaskModal({ isOpen, onClose, onSave, task }: EditTaskModalPr
                 priority,
                 due_date: new Date(endDate),
             };
-
-            onSave(updatedTask); // Chama a função de salvar com a tarefa atualizada
+            
+            onSave(updatedTask);
             resetFields();
             onClose();
         }
     };
-
+    
     const resetFields = () => {
         setTitle('');
         setDescription('');
         setPriority(3);
         setEndDate('');
     };
-
+    
     const today = new Date().toISOString().split('T')[0];
+
+    useEffect(() => {
+        if (task) {
+            setTitle(task.title);
+            setDescription(task.description);
+            setPriority(task.priority);
+            setEndDate(task.due_date ? new Date(task.due_date).toISOString().split('T')[0] : '');
+        }
+    }, [task]);
 
     if (!isOpen || !task) return null;
 

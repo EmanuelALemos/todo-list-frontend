@@ -109,7 +109,7 @@ export function BoardPage() {
                 <header className="flex flex-row items-center space-x-2 ">
                     <button
                         className="p-2 bg-transparent border-none hover:text-slate-400"
-                        onClick={() => navigate(-1)} // Navega para a página anterior
+                        onClick={() => navigate(-1)}
                     >
                         <GoArrowLeft className="inline-block" size={32} />
                     </button>

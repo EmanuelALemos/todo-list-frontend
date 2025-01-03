@@ -26,7 +26,7 @@ export function NewBoardModal ({ isOpen, onClose, onCreateBoard }: ModalProps) {
         >
             <div
                 className="bg-gray-800 border border-slate-600 p-8 rounded-md w-96"
-                onClick={(e) => e.stopPropagation()} // Impede que o clique fora do modal feche-o
+                onClick={(e) => e.stopPropagation()}
             >
                 <h2 className="text-xl font-semibold mb-4">Criar novo Quadro</h2>
                 <form onSubmit={handleSubmit}>
