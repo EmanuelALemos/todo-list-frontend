@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# Todo List Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Todo List Frontend é uma aplicação de gerenciamento de tarefas inspirada no GitHub Projects, onde boards, colunas e tarefas podem ser criados, editados e excluidos. O frontend foi desenvolvido com React, TypeScript e Tailwind CSS e Vite proporcionando uma interface limpa e moderna.
 
-Currently, two official plugins are available:
+### Funcionalidades
+  - Boards: Visualize e gerencie boards para organizar suas tarefas.
+  - Colunas: Crie e organize tarefas em colunas dentro dos boards.
+  - Tarefas: Adicione, edite, mova e exclua tarefas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tecnologias Utilizadas
+  - React - Biblioteca para construir interfaces de usuário.
+  - TypeScript - Superset de JavaScript que adiciona tipagem estática.
+  - Tailwind CSS - Framework CSS utilitário para construção rápida de interfaces.
+  - Vite - Ferramenta de build moderna e rápida para desenvolvimento.
+  - Axios - Para realizar requisições HTTP.
+  - React Router - Para gerenciamento de navegação entre páginas.
 
-## Expanding the ESLint configuration
+### Instalação e Execução
+  - Clone o repositório para sua máquina local:
+      `git clone https://github.com/seu-usuario/todo-list-frontend.git`
+      `cd todo-list-frontend`
+  - Instale as dependências do projeto com o npm:
+      `npm install`
+  - Execute o projeto em modo de desenvolvimento usando o Vite:
+      `npm run dev`
+  - O aplicativo estará disponível em `http://localhost:5173`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Telas de Exemplo
 
-- Configure the top-level `parserOptions` property like this:
+#### Criando um Quadro:
+![image](https://github.com/user-attachments/assets/7567f1fa-ee91-4bc3-beeb-28b6decc632f)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### Home: 
+![image](https://github.com/user-attachments/assets/995f7dad-98ea-4027-8985-fec289bad00d)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Criando uma Coluna:
+![image](https://github.com/user-attachments/assets/488d3f7e-3f3a-4cf3-9047-034af475865b)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### Visualizando um Quadro:
+![image](https://github.com/user-attachments/assets/7d3f77d7-693b-406c-8252-7c95f60f4178)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### Criando uma Tarefa: 
+![image](https://github.com/user-attachments/assets/5fec7186-ff81-4cef-bb4e-868bdb26a902)
+
+#### Visualizando os detalhes da tarefa:
+![image](https://github.com/user-attachments/assets/866307a7-39c4-4d0b-9b58-e5b5ce37a48a)
+
+
+
+
+
+
+
+
