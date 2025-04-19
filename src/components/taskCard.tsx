@@ -46,7 +46,7 @@ export function TaskCard({ id, title, description, priority, due_date, column_id
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
-        end: (item, monitor) => {
+        end: (_item, monitor) => {
             if(!monitor.didDrop()) {
                 if (onRefresh) {
                     onRefresh(!monitor.didDrop());

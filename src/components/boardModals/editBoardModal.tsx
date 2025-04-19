@@ -5,7 +5,7 @@ interface EditBoardModalProps {
     isOpen: boolean;
     onClose: () => void;
     onUpdateBoard: (board: Board) => void;
-    board?: Board | null;
+    board: Board | null;
 }
 
 export function EditBoardModal({ isOpen, onClose, onUpdateBoard, board }: EditBoardModalProps) {

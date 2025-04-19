@@ -55,7 +55,7 @@ export function NewColumnModal({ isOpen, onClose, onSave }: NewColumnModalProps)
                     </div>
 
                     <div className="mb-4">
-                        <label className="block text-white mb-1">Color</label>
+                        <label className="block text-white mb-1">Cor</label>
                         <div className="flex gap-2">
                             {colors.map((color) => (
                                 <div
